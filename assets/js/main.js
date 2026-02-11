@@ -323,16 +323,17 @@
   /**
    * Force CV download
    */
-  document.querySelectorAll('a[href*="Kella_Douzoune_CV.pdf"]').forEach(link => {
+  document.querySelectorAll('a[href*="Kella_Douzoune_CV"]').forEach(link => {
     link.addEventListener('click', function(e) {
       // Force download by creating a temporary link
       const url = this.getAttribute('href');
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'Kella_Douzoune_CV.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const filename = url.split('/').pop(); // Extract filename from URL
+      const newLink = document.createElement('a');
+      newLink.href = url;
+      newLink.download = filename;
+      document.body.appendChild(newLink);
+      newLink.click();
+      document.body.removeChild(newLink);
     });
   });
 
