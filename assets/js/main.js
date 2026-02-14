@@ -325,6 +325,7 @@
    */
   document.querySelectorAll('a[href*="Kella_Douzoune_CV"]').forEach(link => {
     link.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent browser default to avoid double download
       // Force download by creating a temporary link
       const url = this.getAttribute('href');
       const filename = url.split('/').pop(); // Extract filename from URL
